@@ -11,7 +11,7 @@ func main() {
 
 	wwwPort := os.Getenv("PORT")
 	if wwwPort == "" {
-		wwwPort = "10080"
+		wwwPort = "8080"
 	}
 
 	http.HandleFunc("/", HandleRoot)
