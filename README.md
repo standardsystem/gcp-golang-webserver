@@ -1,4 +1,5 @@
-# gcp-cloudrun-gcs-golang-webserver
+# gcp-golang-webserver
+
 GCS上の指定バケットをWebとして公開する簡易サーバコンテナ
 
 ## 環境変数
