@@ -1,0 +1,30 @@
+# .gcloudignore
+#
+# GCP Cloud Run/Build へのアップロードから除外するファイルを定義します。
+
+# Git 関連
+.git
+.gitignore
+
+# Go バイナリとキャッシュ
+server.exe
+*.exe
+*.test
+*.prof
+
+# 依存関係 (ソースコードのみアップロードし、ビルドはクラウド側で行う)
+# vendor/
+
+# 秘密情報
+.env
+credential.json
+secrets/
+
+# 開発用ツール/キャッシュ
+.gemini/
+.vscode/
+.idea/
+*.log
+
+# Docker/Build
+docker-compose.yml

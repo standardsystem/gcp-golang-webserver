@@ -14,12 +14,9 @@ func main() {
 		wwwPort = "8080"
 	}
 
-	http.HandleFunc("/", HandleRoot)
+	http.HandleFunc("/", AuthMiddleware(HandleRoot))
 
-	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("ok"))
-	})
-	http.HandleFunc("/readiness", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("ok"))
 	})
 
