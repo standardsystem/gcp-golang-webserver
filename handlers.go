@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path"
 	"strconv"
 	"time"
 
@@ -40,6 +41,16 @@ func HandleRoot(w http.ResponseWriter, r *http.Request) {
 
 	oh := bucket.Object(filename)
 	objAttrs, err := oh.Attrs(ctx)
+
+	// if file not found
+	// try to find index.html
+	if err != nil {
+		filename = path.Join(filename, "index.html")
+
+		oh = bucket.Object(filename)
+		objAttrs, err = oh.Attrs(ctx)
+	}
+
 	if err != nil {
 		elapsed := time.Since(start)
 		log.Println("| 404 |", userEmail, elapsed.String(), r.Host, r.Method, r.URL.Path, err.Error())
